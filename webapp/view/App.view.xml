@@ -6,7 +6,10 @@ xmlns="sap.m">
 <VBox class="sapUiSmallMargin">
 <Input id="Username" placeholder="Enter your username"/>
 <Input id="Password" type="Password" placeholder="Enter your password"/>
+<HBox >
 <Button type="Emphasized" text="Login" press="onPress"/>
+<Button  text="SignUp" type="Default"/>
+</HBox>
 </VBox>
 
 </Page>
