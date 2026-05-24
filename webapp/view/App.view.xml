@@ -1,17 +1,32 @@
-<mvc:View
-    controllerName="sap.practice.practice.controller.App"
+<mvc:View controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <VBox>
-        <Text text="Outer VBox - Top" />
-        <HBox>
-            <Text text="HBox Item 1" />
-            <Text text="HBox Item 2" />
-        </HBox>
-        <VBox>
-            <Text text="Inner VBox - Row 1" />
-            <Text text="Inner VBox - Row 2" />
-        </VBox>
-        <Text text="Outer VBox - Bottom" />
-    </VBox>
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <App id="myApp">
+        <Page 
+            title="Registration"
+            showNavButton="false"
+            backgroundDesign="Solid">
+           
+            <content>
+                <VBox width="100%" justifyContent="Center" alignItems="Center">
+                    <VBox class="sapUiMediumMargin" width="320px">
+                        <Title text="Registration Form" level="H2" class="sapUiSmallMarginBottom"/>
+                        <Label text="Name" labelFor="inputName"/>
+                        <Input id="inputName" placeholder="Enter your name" />
+                        <Label text="Email" labelFor="inputEmail" class="sapUiSmallMarginTop"/>
+                        <Input id="inputEmail" placeholder="Enter your email" type="Email" />
+                        <Button text="Submit" press="onPress" class="sapUiSmallMarginTop" />
+                    </VBox>
+                </VBox>
+            </content>
+            <footer>
+                <Toolbar>
+                    <ToolbarSpacer/>
+                    <Button text="Help" />
+                    <Button text="Exit" type="Reject"/>
+                </Toolbar>
+            </footer>
+        </Page>
+    </App>
 </mvc:View>
