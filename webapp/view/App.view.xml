@@ -2,11 +2,11 @@
 xmlns="sap.m">
 
 <App>
-<Page title="Welcome to SAPUI5">
-
+<Page title="Login Page">
 <VBox class="sapUiSmallMargin">
-<Title text="Hello SapUi5" level="H2"/>
-<Button text="press me" press="onPress"/>
+<Input id="Username" placeholder="Enter your username"/>
+<Input id="Password" type="Password" placeholder="Enter your password"/>
+<Button type="Emphasized" text="Login" press="onPress"/>
 </VBox>
 
 </Page>

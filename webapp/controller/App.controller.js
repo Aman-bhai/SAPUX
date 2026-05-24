@@ -8,7 +8,7 @@ sap.ui.define([
       onInit() {
       },
       onPress() {
-          MessageToast.show("Button pressed!");
+          MessageToast.show("Login In Progress!");
       }
   });
 });
