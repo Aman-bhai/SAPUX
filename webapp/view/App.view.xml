@@ -1,17 +1,17 @@
-<mvc:View controllerName="sap.practice.practice.controller.App" xmlns:mvc="sap.ui.core.mvc"
-xmlns="sap.m">
-
-<App>
-<Page title="Login Page">
-<VBox class="sapUiSmallMargin">
-<Input id="Username" placeholder="Enter your username"/>
-<Input id="Password" type="Password" placeholder="Enter your password"/>
-<HBox >
-<Button type="Emphasized" text="Login" press="onPress"/>
-<Button  text="SignUp" type="Default"/>
-</HBox>
-</VBox>
-
-</Page>
-</App>
+<mvc:View
+    controllerName="sap.practice.practice.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox>
+        <Text text="Outer VBox - Top" />
+        <HBox>
+            <Text text="HBox Item 1" />
+            <Text text="HBox Item 2" />
+        </HBox>
+        <VBox>
+            <Text text="Inner VBox - Row 1" />
+            <Text text="Inner VBox - Row 2" />
+        </VBox>
+        <Text text="Outer VBox - Bottom" />
+    </VBox>
 </mvc:View>
