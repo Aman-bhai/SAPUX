@@ -1,32 +1,42 @@
-<mvc:View controllerName="sap.practice.practice.controller.App"
+<mvc:View
+    controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <App id="myApp">
-        <Page 
-            title="Registration"
-            showNavButton="false"
-            backgroundDesign="Solid">
-           
-            <content>
-                <VBox width="100%" justifyContent="Center" alignItems="Center">
-                    <VBox class="sapUiMediumMargin" width="320px">
-                        <Title text="Registration Form" level="H2" class="sapUiSmallMarginBottom"/>
-                        <Label text="Name" labelFor="inputName"/>
-                        <Input id="inputName" placeholder="Enter your name" />
-                        <Label text="Email" labelFor="inputEmail" class="sapUiSmallMarginTop"/>
-                        <Input id="inputEmail" placeholder="Enter your email" type="Email" />
-                        <Button text="Submit" press="onPress" class="sapUiSmallMarginTop" />
-                    </VBox>
-                </VBox>
-            </content>
-            <footer>
-                <Toolbar>
-                    <ToolbarSpacer/>
-                    <Button text="Help" />
-                    <Button text="Exit" type="Reject"/>
-                </Toolbar>
-            </footer>
-        </Page>
+    xmlns="sap.m">
+
+    <App id="app">
+
+        <pages>
+
+            <!-- Page 1 -->
+            <Page id="page1" title="Page One">
+                <content>
+
+                    <Button text="Go to Page 2" press="onGoToPage2" />
+
+                    <Button text="Get Current Page" press="onGetCurrentPage" />
+
+                    <Button text="Add New Page" press="onAddPage" />
+
+                    <Button text="Remove Page 2" press="onRemovePage2" />
+
+                </content>
+            </Page>
+
+            <!-- Page 2 -->
+            <Page id="page2" title="Page Two">
+                <content>
+
+                    <Button text="Back" press="onGoBack" />
+
+                    <Button text="Back to Page 1" press="onBackToPage1" />
+
+                    <Button text="Back to Top" press="onBackToTop" />
+
+                </content>
+            </Page>
+
+        </pages>
+
     </App>
+
 </mvc:View>

@@ -1,26 +1,15 @@
 sap.ui.define([
-    "sap/ui/core/UIComponent",
-    "sap/practice/practice/model/models"
-], (UIComponent, models) => {
+    "sap/ui/core/UIComponent"
+], function (UIComponent) {
     "use strict";
 
     return UIComponent.extend("sap.practice.practice.Component", {
         metadata: {
-            manifest: "json",
-            interfaces: [
-                "sap.ui.core.IAsyncContentCreation"
-            ]
-        },
-
-        init() {
-            // call the base component's init function
-            UIComponent.prototype.init.apply(this, arguments);
-
-            // set the device model
-            this.setModel(models.createDeviceModel(), "device");
-
-            // enable routing
-            this.getRouter().initialize();
+            rootView: {
+                viewName: "sap.practice.practice.view.App",
+                type: "XML",
+                async: true
+            }
         }
     });
 });
