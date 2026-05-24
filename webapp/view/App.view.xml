@@ -1,7 +1,14 @@
-<mvc:View controllerName="sap.practice.practice.controller.App"
-    displayBlock="true"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+<mvc:View controllerName="sap.practice.practice.controller.App" xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m">
+
+<App>
+<Page title="Welcome to SAPUI5">
+
+<VBox class="sapUiSmallMargin">
+<Title text="Hello SapUi5" level="H2"/>
+<Button text="press me" press="onPress"/>
+</VBox>
+
+</Page>
+</App>
 </mvc:View>
