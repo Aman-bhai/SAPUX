@@ -1,47 +1,95 @@
 <mvc:View controllerName="sap.practice.practice.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
 
     <App id="app">
-        <Page title="Login Page" enableScrolling="false">
+        <Page title="Survey Page" enableScrolling="true">
             <content>
 
-                <!-- FlexBox to center everything -->
-                <FlexBox 
-                    height="100%" 
-                    justifyContent="Center" 
-                    alignItems="Center">
+                <!-- Center Layout -->
+                <FlexBox justifyContent="Center" alignItems="Start">
 
-                    <!-- Login Card -->
+                    <!-- Form Card -->
                     <VBox 
-                        width="300px"
-                        class="sapUiSmallMargin sapUiResponsiveContentPadding sapUiTinyMargin"
-                        backgroundDesign="Solid"
-                    >
+                        width="350px"
+                        class="sapUiResponsiveContentPadding sapUiSmallMargin"
+                        backgroundDesign="Solid">
 
-                        <Title text="Login" level="H3" class="sapUiSmallMarginBottom"/>
+                        <Title text="Survey" level="H3" class="sapUiSmallMarginBottom"/>
 
+                        <!-- ✅ Username -->
                         <Label text="Username"/>
-                        <Input id="username" placeholder="Enter your username"/>
+                        <Input value="{/username}" placeholder="Enter your username"/>
 
+                        <!-- ✅ Email -->
                         <Label text="Email" class="sapUiSmallMarginTop"/>
-                        <Input id="emailInput" placeholder="Enter your email"/>
+                        <Input value="{/email}" placeholder="Enter your email"/>
 
+                        <!-- ✅ Password -->
                         <Label text="Password" class="sapUiSmallMarginTop"/>
-                        <Input id="password" type="Password" placeholder="Enter your password"/>
+                        <Input value="{/password}" type="Password" placeholder="Enter your password"/>
 
+                        <!-- ✅ TextArea -->
+                        <Label text="What do you like about surveys?" class="sapUiSmallMarginTop"/>
+                        <TextArea value="{/surveyFeedback}" placeholder="Please share your thoughts..."/>
+
+                        <!-- ✅ Radio Buttons -->
+                        <Label text="Survey Frequency" class="sapUiSmallMarginTop"/>
+                        <RadioButtonGroup select="onFrequencyChange">
+                            <buttons>
+                                <RadioButton text="Daily"/>
+                                <RadioButton text="Weekly"/>
+                                <RadioButton text="Monthly"/>
+                                <RadioButton text="Rarely"/>
+                            </buttons>
+                        </RadioButtonGroup>
+
+                        <!-- ✅ ComboBox -->
+                        <Label text="Favorite Category" class="sapUiSmallMarginTop"/>
+                        <ComboBox 
+                            selectedKey="{/category}" 
+                            selectionChange="onCategoryChange">
+                            <items>
+                                <core:Item key="tech" text="Technology"/>
+                                <core:Item key="health" text="Health"/>
+                                <core:Item key="education" text="Education"/>
+                            </items>
+                        </ComboBox>
+
+                        <!-- ✅ CheckBox -->
+                        <Label text="Select your interests" class="sapUiSmallMarginTop"/>
+                        <CheckBox text="Sports" select="onCheckBoxSelect"/>
+                        <CheckBox text="Music" select="onCheckBoxSelect"/>
+                        <CheckBox text="Travel" select="onCheckBoxSelect"/>
+
+                        <!-- ✅ Date Picker -->
+                        <Label text="Select Date" class="sapUiSmallMarginTop"/>
+                        <DatePicker value="{/date}"/>
+
+                        <!-- ✅ Time Picker -->
+                        <Label text="Preferred Time" class="sapUiSmallMarginTop"/>
+                        <TimePicker value="{/time}"/>
+
+                        <!-- ✅ File Upload -->
+                        <Label text="Upload File" class="sapUiSmallMarginTop"/>
+                        <unified:FileUploader 
+                            change="onFileChange"
+                            buttonText="Choose File"
+                            placeholder="Upload document"/>
+
+                        <!-- ✅ Switch -->
+                        <Label text="Receive Notifications?" class="sapUiSmallMarginTop"/>
+                        <Switch state="{/notifications}" change="onSwitchChange"/>
+
+                        <!-- ✅ Submit -->
                         <Button 
-                            text="Login" 
+                            text="Submit" 
                             type="Emphasized"
-                            class="sapUiSmallMarginTop"
+                            class="sapUiMediumMarginTop"
                             press="onLoginPress"/>
-
-                            <Text text="Don't have an account?" class="sapUiSmallMarginTop"/>
-                            <Button 
-                                text="Register" 
-                                type="default"
-                                press="onRegisterPress"/>   
 
                     </VBox>
 
@@ -50,4 +98,5 @@
             </content>
         </Page>
     </App>
+
 </mvc:View>
