@@ -1,42 +1,210 @@
-<mvc:View
-    controllerName="sap.practice.practice.controller.App"
+<mvc:View controllerName="sap.practice.practice.controller.App"
+    displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
 
     <App id="app">
-
         <pages>
 
-            <!-- Page 1 -->
-            <Page id="page1" title="Page One">
+            <!-- ✅ HOME -->
+            <Page id="page1" title="Layouts in SAPUI5 - Home">
                 <content>
+                    <VBox class="sapUiMediumMargin" width="100%">
+                        <Text text="Choose a Layout to Explore"
+                              class="sapUiSmallMarginBottom"/>
 
-                    <Button text="Go to Page 2" press="onGoToPage2" />
-
-                    <Button text="Get Current Page" press="onGetCurrentPage" />
-
-                    <Button text="Add New Page" press="onAddPage" />
-
-                    <Button text="Remove Page 2" press="onRemovePage2" />
-
+                        <Button text="FlexBox Layout" press="goToFlex"/>
+                        <Button text="Grid Layout" press="goToGrid"/>
+                        <Button text="Panel Layout" press="goToPanel"/>
+                        <Button text="Toolbar Layout" press="goToToolbar"/>
+                        <Button text="VBox Layout" press="goToVBox"/>
+                        <Button text="HBox Layout" press="goToHBox"/>
+                        <Button text="Scroll Layout" press="goToScroll"/>
+                        <Button text="Splitter Layout" press="goToSplitter"/>
+                        <Button text="Simple Form Layout" press="goToForm"/>
+                    </VBox>
                 </content>
             </Page>
 
-            <!-- Page 2 -->
-            <Page id="page2" title="Page Two">
+            <!-- ✅ FLEX -->
+            <Page id="page2" title="FlexBox Layout"
+                  showNavButton="true" navButtonPress="onBack">
                 <content>
+                    <VBox class="sapUiMediumMargin">
+                        <Text text="FlexBox Example"/>
+                        <FlexBox direction="Row" justifyContent="SpaceBetween">
+                            <Button text="1"/>
+                            <Button text="2"/>
+                            <Button text="3"/>
+                        </FlexBox>
+                    </VBox>
+                </content>
+            </Page>
 
-                    <Button text="Back" press="onGoBack" />
+        <!-- ✅ GRID -->
+<Page id="page3" title="Grid Layout"
+      showNavButton="true"
+      navButtonPress="onBack">
 
-                    <Button text="Back to Page 1" press="onBackToPage1" />
+    <content>
+        <VBox class="sapUiLargeMargin" width="100%">
 
-                    <Button text="Back to Top" press="onBackToTop" />
+            <Text text="Grid Layout using sap.ui.layout.Grid"
+                  class="sapUiSmallMarginBottom"/>
 
+            <l:Grid defaultSpan="L4 M4 S12" hSpacing="1" vSpacing="1">
+
+                <Button text="Column 1"/>
+                <Button text="Column 2"/>
+                <Button text="Column 3"/>
+                <Button text="Column 4"/>
+                <Button text="Column 5"/>
+                <Button text="Column 6"/>
+
+            </l:Grid>
+
+        </VBox>
+    </content>
+
+</Page>
+
+            <!-- ✅ PANEL -->
+            <Page id="page4" title="Panel Layout"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <Panel headerText="Panel">
+                        <Text text="Inside panel"/>
+                    </Panel>
+                </content>
+            </Page>
+
+            <!-- ✅ TOOLBAR -->
+            <Page id="page5" title="Toolbar Layout"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <Toolbar>
+                        <Button text="Save"/>
+                        <Button text="Edit"/>
+                        <Button text="Delete"/>
+                    </Toolbar>
+                </content>
+            </Page>
+
+            <!-- ✅ VBOX -->
+            <Page id="page6" title="VBox Layout"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <VBox class="sapUiMediumMargin">
+                        <Button text="Top"/>
+                        <Button text="Middle"/>
+                        <Button text="Bottom"/>
+                    </VBox>
+                </content>
+            </Page>
+
+            <!-- ✅ HBOX -->
+            <Page id="page7" title="HBox Layout"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <HBox class="sapUiMediumMargin">
+                        <Button text="Left"/>
+                        <Button text="Center"/>
+                        <Button text="Right"/>
+                    </HBox>
+                </content>
+            </Page>
+
+            <!-- ✅ SCROLL TYPES -->
+            <Page id="page8" title="Scroll Layout Types"
+                  showNavButton="true" navButtonPress="onBack">
+
+                <content>
+                    <VBox class="sapUiMediumMargin" width="70%">
+
+                        <!-- VERTICAL -->
+                        <Text text="Vertical Scroll"/>
+                        <ScrollContainer height="150px" width="80%" vertical="true" focusable="true">
+                            <VBox>
+                                <Text text="Item 1"/><Text text="Item 2"/><Text text="Item 3"/>
+                                <Text text="Item 4"/><Text text="Item 5"/><Text text="Item 6"/>
+                                <Text text="Item 7"/><Text text="Item 8"/>
+                                <Text text="Item 1"/><Text text="Item 2"/><Text text="Item 3"/>
+                                <Text text="Item 4"/><Text text="Item 5"/><Text text="Item 6"/>
+                                <Text text="Item 7"/><Text text="Item 8"/>
+                                <Text text="Item 1"/><Text text="Item 2"/><Text text="Item 3"/>
+                                <Text text="Item 4"/><Text text="Item 5"/><Text text="Item 6"/>
+                                <Text text="Item 7"/><Text text="Item 8"/>
+                            </VBox>
+                        </ScrollContainer>
+
+                        <!-- HORIZONTAL -->
+                        <Text text="Horizontal Scroll" class="sapUiSmallMarginTop"/>
+                        <ScrollContainer height="100px" width="60%" horizontal="true" focusable="true">
+                            <HBox width="900px">
+                                <Button text="1"/><Button text="2"/><Button text="3"/>
+                                <Button text="4"/><Button text="5"/><Button text="6"/>
+                                <Button text="7"/><Button text="8"/>
+                            </HBox>
+                        </ScrollContainer>
+
+                        <!-- BOTH -->
+                        <Text text="Both Scroll" class="sapUiSmallMarginTop"/>
+                        <ScrollContainer height="150px" width="60%" horizontal="true" vertical="true" focusable="true">
+                            <VBox width="800px">
+                                <HBox width="900px">
+                                    <Text text="Wide1" width="200px"/>
+                                    <Text text="Wide2" width="200px"/>
+                                    <Text text="Wide3" width="200px"/>
+                                    <Text text="Wide4" width="200px"/>
+                                    <Text text="Wide1" width="200px"/>
+                                    <Text text="Wide2" width="200px"/>
+                                    <Text text="Wide3" width="200px"/>
+                                    <Text text="Wide4" width="200px"/>
+                                    <Text text="Wide1" width="200px"/>
+                                    <Text text="Wide2" width="200px"/>
+                                    <Text text="Wide3" width="200px"/>
+                                    <Text text="Wide4" width="200px"/>
+                                    <Text text="Wide1" width="200px"/>
+                                    <Text text="Wide2" width="200px"/>
+                                    <Text text="Wide3" width="200px"/>
+                                    <Text text="Wide4" width="200px"/>
+                                </HBox>
+
+                                <Text text="Item A"/><Text text="Item B"/><Text text="Item C"/>
+                                <Text text="Item D"/><Text text="Item E"/><Text text="Item F"/>
+                            </VBox>
+                        </ScrollContainer>
+
+                    </VBox>
+                </content>
+            </Page>
+
+            <!-- ✅ SPLITTER -->
+            <Page id="page9" title="Splitter Layout"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <HBox>
+                        <Panel width="50%" headerText="Left"/>
+                        <Panel width="50%" headerText="Right"/>
+                    </HBox>
+                </content>
+            </Page>
+
+            <!-- ✅ FORM -->
+            <Page id="page10" title="Simple Form"
+                  showNavButton="true" navButtonPress="onBack">
+                <content>
+                    <form:SimpleForm editable="true">
+                        <Label text="Name"/>
+                        <Input/>
+                        <Label text="Email"/>
+                        <Input/>
+                    </form:SimpleForm>
                 </content>
             </Page>
 
         </pages>
-
     </App>
-
 </mvc:View>
