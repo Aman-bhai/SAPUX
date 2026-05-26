@@ -1,114 +1,142 @@
 <mvc:View controllerName="sap.practice.practice.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns:unified="sap.ui.unified">
+    xmlns="sap.m"
+>
 
     <App>
-        <Page title="Survey Page" enableScrolling="true">
-            <content>
 
-                <FlexBox justifyContent="Center" alignItems="Start">
+       <Page title="Display Controls">
 
-                    <VBox width="360px"
-                        class="sapUiResponsiveContentPadding sapUiSmallMargin"
-                        backgroundDesign="Solid">
+            <VBox width="30%" class="sapUiSmallMargin">
+            <Label text="Input Text!" />
+            <Input id="inputText" placeholder="Enter text here..." liveChange="onInputLiveChange" />
+            </VBox>
+            
+            <Text text="lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum
+             dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor 
+             sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit 
+             ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem 
+             ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet" textAlign="Center" wrapping="true"/>
 
-                        <Title text="Survey Form" />
+            <Title text="Title H" level="H1" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+            <Title text="Title H" level="H2" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+            <Title text="Title H" level="H3" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+            <Title text="Title H" level="H4" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+            <Title text="Title H" level="H5" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+            <Title text="Title H" level="H6" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
 
-                        <!-- Inputs -->
-                        <Label text="Username"/>
-                        <Input value="{/username}" placeholder="Enter username"/>
 
-                        <Label text="Email"/>
-                        <Input value="{/email}" placeholder="Enter email"/>
+        
+            <VBox alignItems="Start" class="sapUiSmallMargin">
+        
+                <Link text="SAP Website" href="https://www.sap.com" target="_blank"/>
+        
+            </VBox>
 
-                        <Label text="Password"/>
-                        <Input value="{/password}" type="Password" placeholder="Enter password"/>
 
-                        <!-- TextArea -->
-                        <Label text="Feedback"/>
-                        <TextArea value="{/surveyFeedback}" placeholder="Write your feedback"/>
 
-                        <!-- Radio -->
-                        <Label text="Frequency"/>
-                        <RadioButtonGroup select="onFrequencyChange">
-                            <buttons>
-                                <RadioButton text="Daily"/>
-                                <RadioButton text="Weekly"/>
-                                <RadioButton text="Monthly"/>
-                            </buttons>
-                        </RadioButtonGroup>
+            <ObjectIdentifier
+                title="Device"
+                text="Dell XPS 13 (i7, 16GB RAM, 512GB SSD)" class="sapUiSmallMargin"
+            />
 
-                        <!-- ComboBox -->
-                        <Label text="Category"/>
-                        <ComboBox placeholder="Select category" selectionChange="onCategoryChange">
-                            <items>
-                                <core:Item key="tech" text="Technology"/>
-                                <core:Item key="health" text="Health"/>
-                            </items>
-                        </ComboBox>
 
-                        <!-- Select -->
-                        <Label text="Priority"/>
-                        <Select selectedKey="{/priority}">
-                            <items>
-                                <core:Item key="" text="-- Select Priority --"/>
-                                <core:Item key="high" text="High"/>
-                                <core:Item key="medium" text="Medium"/>
-                                <core:Item key="low" text="Low"/>
-                            </items>
-                        </Select>
 
-                        <!-- MultiComboBox -->
-                        <Label text="Skills"/>
-                        <MultiComboBox placeholder="Select skills" selectionFinish="onMultiSelect">
-                            <items>
-                                <core:Item key="ui5" text="SAP UI5"/>
-                                <core:Item key="abap" text="ABAP"/>
-                                <core:Item key="js" text="JavaScript"/>
-                            </items>
-                        </MultiComboBox>
+            <ObjectListItem
+                title="Laptop"
+                intro="Category: Electronics"
+                number="125000"
+                numberUnit="INR">
 
-                        <!-- Checkbox -->
-                        <Label text="Interests"/>
-                        <CheckBox text="Sports" select="onCheckBoxSelect"/>
-                        <CheckBox text="Music" select="onCheckBoxSelect"/>
-                        <CheckBox text="Travel" select="onCheckBoxSelect"/>
+                <attributes>
+                    <ObjectAttribute text="Dell XPS 13" />
+                    <ObjectAttribute text="Intel i7, 16GB RAM" />
+                </attributes>
 
-                        <!-- Date -->
-                        <Label text="Date"/>
-                        <DatePicker value="{/date}" placeholder="Select date"/>
+            </ObjectListItem>
 
-                        <!-- Time -->
-                        <Label text="Time"/>
-                        <TimePicker value="{/time}" placeholder="Select time"/>
 
-                        <!-- File -->
-                        <Label text="Upload File"/>
-                        <unified:FileUploader 
-                            change="onFileChange"
-                            buttonText="Browse"
-                            placeholder="Choose file"/>
 
-                        <!-- Switch -->
-                        <Label text="Notifications"/>
-                        <Switch state="{/notifications}" change="onSwitchChange"/>
+<ObjectStatus
+    text="Available in Stock" 
+    state="Success" 
+    class="sapUiSmallMargin"/>
 
-                        <!-- Submit -->
-                        <Button
-                            text="Submit"
-                            type="Emphasized"
-                            class="sapUiMediumMarginTop"
-                            press="onSubmit"/>
+<ObjectStatus 
+    text="Currently Unavailable" 
+    state="Error" 
+    class="sapUiSmallMargin"/>
 
-                    </VBox>
+<ObjectStatus 
+    text="Limited Stock Remaining" 
+    state="Warning" 
+    class="sapUiSmallMargin"/>
 
-                </FlexBox>
+<ObjectStatus 
+    text="Check Availability Soon" 
+    state="Information" 
+    class="sapUiSmallMargin"/>
 
-            </content>
-        </Page>
+
+<HBox
+    alignItems="Center" 
+    class="sapUiSmallMargin">
+
+    <Avatar 
+        initials="JD" 
+        displaySize="M" 
+        class="sapUiSmallMarginEnd"/>
+
+    <VBox justifyContent="Center">
+        <Text 
+            text="John Doe"/>
+        
+        <Text 
+            text="john.doe@sap.com" 
+        />
+    </VBox>
+
+</HBox>
+
+
+
+<core:HTML
+    content="
+    &lt;div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'&gt;
+        &lt;h3 style='color: #007bff;'&gt;Custom HTML Content&lt;/h3&gt;
+        &lt;p&gt;This is a custom HTML block rendered within the SAPUI5 application.&lt;/p&gt;
+    &lt;/div&gt;" 
+    class="sapUiSmallMargin"/> 
+
+
+<Panel headerText="Product Overview" class="sapUiSmallMargin">
+<VBox class="sapUiSmallMargin">
+<Title text="Laptop Pro 14" level="H3"/>
+<ObjectIdentifier text="Product ID: LP14-2024"/>
+<ObjectStatus  text="In Stock" state="Success"/>
+<HBox alignItems="Start" class="sapUiSmallMarginTop">
+
+    <Image 
+        src="https://p4-ofp.static.pub//fes/cms/2025/12/04/nyhvwe3f5d9x3e9p09ruiwyn0g7t6c434329.png" 
+        alt="Laptop Image" 
+        width="150px" 
+        height="150px" 
+        class="sapUiSmallMarginEnd"/>
+
+    <VBox width="70%">
+        <Text 
+            text="This powerful laptop is designed for professional use, offering high performance, fast processing, and a sleek modern design. It is ideal for developers, designers, and business users who need reliability and speed for daily tasks."
+            wrapping="true"/>
+    </VBox>
+
+</HBox>
+
+
+</VBox>
+</Panel>
+        </Page> 
     </App>
 
 </mvc:View>
