@@ -1,142 +1,42 @@
-<mvc:View controllerName="sap.practice.practice.controller.App"
-    displayBlock="true"
+<mvc:View
+    controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
     xmlns="sap.m"
->
+    xmlns:core="sap.ui.core">
 
     <App>
+        <Page title="Tables and Lists" class="sapUiContentPadding">
 
-       <Page title="Display Controls">
+            <Table items="{/products}" id="productTable"  >
 
-            <VBox width="30%" class="sapUiSmallMargin">
-            <Label text="Input Text!" />
-            <Input id="inputText" placeholder="Enter text here..." liveChange="onInputLiveChange" />
-            </VBox>
-            
-            <Text text="lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum
-             dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor 
-             sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit 
-             ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem 
-             ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet" textAlign="Center" wrapping="true"/>
+                <!-- Columns -->
+                <columns>
+                 <Column>
+                        <Text text="Product ID"/>
+                    </Column>
+                    <Column>
+                        <Text text="Product Name"/>
+                    </Column>
+                    <Column>
+                        <Text text="Price"/>
+                    </Column>
+                   
+                </columns>
 
-            <Title text="Title H" level="H1" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
-            <Title text="Title H" level="H2" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
-            <Title text="Title H" level="H3" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
-            <Title text="Title H" level="H4" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
-            <Title text="Title H" level="H5" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
-            <Title text="Title H" level="H6" class="sapUiSmallMargin sapUiSmallMarginBottom"/>
+                <!-- Rows -->
+                <items>
+                    <ColumnListItem type="Active" press="onItemPress">
+                        <cells>
+                            <Text text="{productId}"/>
+                            <Text text="{name}"/>
+                            <Text text="{price}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
 
+            </Table>
 
-        
-            <VBox alignItems="Start" class="sapUiSmallMargin">
-        
-                <Link text="SAP Website" href="https://www.sap.com" target="_blank"/>
-        
-            </VBox>
-
-
-
-            <ObjectIdentifier
-                title="Device"
-                text="Dell XPS 13 (i7, 16GB RAM, 512GB SSD)" class="sapUiSmallMargin"
-            />
-
-
-
-            <ObjectListItem
-                title="Laptop"
-                intro="Category: Electronics"
-                number="125000"
-                numberUnit="INR">
-
-                <attributes>
-                    <ObjectAttribute text="Dell XPS 13" />
-                    <ObjectAttribute text="Intel i7, 16GB RAM" />
-                </attributes>
-
-            </ObjectListItem>
-
-
-
-<ObjectStatus
-    text="Available in Stock" 
-    state="Success" 
-    class="sapUiSmallMargin"/>
-
-<ObjectStatus 
-    text="Currently Unavailable" 
-    state="Error" 
-    class="sapUiSmallMargin"/>
-
-<ObjectStatus 
-    text="Limited Stock Remaining" 
-    state="Warning" 
-    class="sapUiSmallMargin"/>
-
-<ObjectStatus 
-    text="Check Availability Soon" 
-    state="Information" 
-    class="sapUiSmallMargin"/>
-
-
-<HBox
-    alignItems="Center" 
-    class="sapUiSmallMargin">
-
-    <Avatar 
-        initials="JD" 
-        displaySize="M" 
-        class="sapUiSmallMarginEnd"/>
-
-    <VBox justifyContent="Center">
-        <Text 
-            text="John Doe"/>
-        
-        <Text 
-            text="john.doe@sap.com" 
-        />
-    </VBox>
-
-</HBox>
-
-
-
-<core:HTML
-    content="
-    &lt;div style='background-color: #f0f0f0; padding: 10px; border-radius: 5px;'&gt;
-        &lt;h3 style='color: #007bff;'&gt;Custom HTML Content&lt;/h3&gt;
-        &lt;p&gt;This is a custom HTML block rendered within the SAPUI5 application.&lt;/p&gt;
-    &lt;/div&gt;" 
-    class="sapUiSmallMargin"/> 
-
-
-<Panel headerText="Product Overview" class="sapUiSmallMargin">
-<VBox class="sapUiSmallMargin">
-<Title text="Laptop Pro 14" level="H3"/>
-<ObjectIdentifier text="Product ID: LP14-2024"/>
-<ObjectStatus  text="In Stock" state="Success"/>
-<HBox alignItems="Start" class="sapUiSmallMarginTop">
-
-    <Image 
-        src="https://p4-ofp.static.pub//fes/cms/2025/12/04/nyhvwe3f5d9x3e9p09ruiwyn0g7t6c434329.png" 
-        alt="Laptop Image" 
-        width="150px" 
-        height="150px" 
-        class="sapUiSmallMarginEnd"/>
-
-    <VBox width="70%">
-        <Text 
-            text="This powerful laptop is designed for professional use, offering high performance, fast processing, and a sleek modern design. It is ideal for developers, designers, and business users who need reliability and speed for daily tasks."
-            wrapping="true"/>
-    </VBox>
-
-</HBox>
-
-
-</VBox>
-</Panel>
-        </Page> 
+        </Page>
     </App>
 
 </mvc:View>
