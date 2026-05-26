@@ -37,15 +37,40 @@
                 <Button 
                     text="Sort by Price" 
                     press=".onSortByPrice"
-                    type="Emphasized" />
+                    type="Emphasized"
+                    class="sapUiSmallMarginTop" />
+
+                <!-- 🔘 CRUD Buttons -->
+                <HBox 
+                    justifyContent="SpaceBetween"
+                    class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+
+                    <Button 
+                        text="Add Product" 
+                        press=".onAddProduct" 
+                        type="Accept" />
+
+                    <Button 
+                        text="Update Product" 
+                        press=".onUpdateProduct" 
+                        type="Emphasized" />
+
+                    <Button 
+                        text="Delete Product" 
+                        press=".onDeleteProduct" 
+                        type="Reject" />
+
+                </HBox>
 
                 <!-- 📦 Product Table -->
                 <Table 
-                    id="yourTableId" 
-                    items="{/products}" 
+                    id="yourTableId"
+                    items="{/products}"
                     itemPress=".onItemPress"
+                    mode="SingleSelectLeft"
                     inset="false">
 
+                    <!-- Columns -->
                     <columns>
                         <Column><Text text="ID"/></Column>
                         <Column><Text text="Name"/></Column>
@@ -55,6 +80,7 @@
                         <Column><Text text="Stock"/></Column>
                     </columns>
 
+                    <!-- Rows -->
                     <items>
                         <ColumnListItem type="Active">
                             <cells>

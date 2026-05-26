@@ -192,7 +192,7 @@ sap.ui.define([
 
       // ✅ Show message
       MessageToast.show(
-        "You clicked: " + oProduct.name + 
+        "You clicked: " + oProduct.name +
         " | Price: ₹" + oProduct.price
       );
 
@@ -201,6 +201,82 @@ sap.ui.define([
        * Click → Apple iPhone
        * Output → You clicked Apple iPhone
        */
+    },
+
+
+    onAddProduct: function () {
+
+      var oModel = this.getView().getModel();
+      var aProducts = oModel.getProperty("/products");
+
+      // ✅ New product (you can later take from input fields)
+      var oNewProduct = {
+        productId: Date.now(),
+        name: "New Product",
+        price: 5000,
+        brand: "Demo"
+      };
+
+      // ✅ Add to array
+      aProducts.push(oNewProduct);
+
+      // ✅ Refresh model
+      oModel.setProperty("/products", aProducts);
+
+      MessageToast.show("Product Added ✅");
+    }
+    ,
+
+
+
+
+
+    onDeleteProduct: function () {
+
+      var oTable = this.byId("yourTableId");
+      var oSelected = oTable.getSelectedItem();
+
+      if (!oSelected) {
+        MessageToast.show("Select a row first ❌");
+        return;
+      }
+
+      var oModel = this.getView().getModel();
+      var aProducts = oModel.getProperty("/products");
+
+      var oContext = oSelected.getBindingContext();
+      var iIndex = oContext.getPath().split("/")[2];
+
+      // ✅ Remove item
+      aProducts.splice(iIndex, 1);
+
+      oModel.setProperty("/products", aProducts);
+
+      MessageToast.show("Product Deleted ✅");
+    },
+
+
+
+    onUpdateProduct: function () {
+
+      var oTable = this.byId("yourTableId");
+      var oSelected = oTable.getSelectedItem();
+
+      if (!oSelected) {
+        MessageToast.show("Select a row first ❌");
+        return;
+      }
+
+      var oContext = oSelected.getBindingContext();
+      var oProduct = oContext.getObject();
+
+      // ✅ Update data (example)
+      oProduct.name = "Updated Product";
+      oProduct.price = oProduct.price + 1000;
+
+      this.getView().getModel().refresh();
+
+      MessageToast.show("Product Updated ✅");
     }
 
   });
