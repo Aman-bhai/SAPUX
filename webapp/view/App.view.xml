@@ -2,85 +2,44 @@
     controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:table="sap.ui.table">
+    xmlns:core="sap.ui.core">
 
     <App>
-        <Page title="Product Catalog" class="sapUiContentPadding">
+        <Page title="Fragments" class="sapUiContentPadding">
 
-            <VBox class="sapUiSmallMargin">
+          <VBox>
 
-                <!-- 🔍 Search -->
-                <SearchField 
-                    placeholder="Search products" 
-                    liveChange=".onSearch" />
+    <HBox alignItems="Center" justifyContent="Start" spacing="10px">
 
-                <!-- 🎯 Filter -->
-                <Select change=".onFilterCategory" selectedKey="All">
-                    <items>
-                        <core:Item key="All" text="All Brands"/>
-                        <core:Item key="Apple" text="Apple"/>
-                        <core:Item key="Samsung" text="Samsung"/>
-                        <core:Item key="Sony" text="Sony"/>
-                        <core:Item key="Dell" text="Dell"/>
-                    </items>
-                </Select>
+        <Button 
+            text="Open Dialog" 
+            press=".onOpenDialog" 
+            type="Emphasized" 
+    class="sapUiSmallMarginEnd"/>
 
-                <!-- 🔃 Sort -->
-                <Button 
-                    text="Sort by Price" 
-                    press=".onSortByPrice"
-                    type="Emphasized"/>
 
-                <!-- 🔘 CRUD -->
-                <HBox class="sapUiSmallMarginTop">
-                    <Button text="Add" press=".onAddProduct" type="Accept"/>
-                    <Button text="Update" press=".onUpdateProduct"/>
-                    <Button text="Delete" press=".onDeleteProduct" type="Reject"/>
-                </HBox>
+        <Button 
+            text="Close Dialog" 
+            press=".onCancel" 
+            type="Reject" class="sapUiSmallMarginEnd"/>
 
-                <!-- 📦 GRID TABLE -->
-                <table:Table
-                    id="yourTableId"
-                    rows="{/products}"
-                    selectionMode="Single"
-                    visibleRowCount="6">
 
-                    <table:columns>
+        <Button 
+            text="Open Popover" 
+            press=".onOpenPopover"  class="sapUiSmallMarginEnd"
+            type="Accept"/>
 
-                        <table:Column>
-                            <Label text="ID"/>
-                            <table:template>
-                                <Text text="{productId}"/>
-                            </table:template>
-                        </table:Column>
 
-                        <table:Column>
-                            <Label text="Name"/>
-                            <table:template>
-                                <Text text="{name}"/>
-                            </table:template>
-                        </table:Column>
+ <Button 
+            text="Open Message Box" 
+            press=".onOpenMessageBox"   class="sapUiSmallMarginEnd"
+            type="Attention"/>
 
-                        <table:Column>
-                            <Label text="Brand"/>
-                            <table:template>
-                                <Text text="{brand}"/>
-                            </table:template>
-                        </table:Column>
 
-                        <table:Column>
-                            <Label text="Price"/>
-                            <table:template>
-                                <Text text="₹{price}"/>
-                            </table:template>
-                        </table:Column>
+    </HBox>
 
-                    </table:columns>
-
-                </table:Table>
-
-            </VBox>
-        </Page>
+</VBox>
+</Page>
     </App>
+
 </mvc:View>
