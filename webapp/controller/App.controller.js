@@ -2,12 +2,12 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/model/json/JSONModel",
   "sap/m/MessageToast"
-], function (BaseController, JSONModel, MessageToast) {
+], function (Controller, JSONModel, MessageToast) {
   "use strict";
 
-  return BaseController.extend("sap.practice.practice.controller.App", {
+  return Controller.extend("sap.practice.practice.controller.App", {
 
-    // ✅ Initialize model with all fields
+    // ✅ INIT MODEL
     onInit: function () {
       var oModel = new JSONModel({
         username: "",
@@ -20,74 +20,85 @@ sap.ui.define([
         date: "",
         time: "",
         file: "",
-        notifications: true
+        notifications: true,
+        skills: [],
+        priority: ""
       });
 
       this.getView().setModel(oModel);
     },
 
-    // ✅ Username live change
-    onNameChange: function (oEvent) {
-      var sValue = oEvent.getParameter("value");
-
-      console.log("Username changed to:", sValue);
-      this.getView().getModel().setProperty("/username", sValue);
-    },
-
-    // ✅ Handle RadioButton selection
+    // ✅ RADIO BUTTON
     onFrequencyChange: function (oEvent) {
       var oGroup = oEvent.getSource();
       var index = oGroup.getSelectedIndex();
-      var text = oGroup.getButtons()[index].getText();
-
-      this.getView().getModel().setProperty("/frequency", text);
+      if (index !== -1) {
+        var text = oGroup.getButtons()[index].getText();
+        this.getView().getModel().setProperty("/frequency", text);
+      }
     },
 
-    // ✅ Handle ComboBox selection
+    // ✅ COMBOBOX
     onCategoryChange: function (oEvent) {
-      var sValue = oEvent.getParameter("selectedItem").getText();
-      this.getView().getModel().setProperty("/category", sValue);
+      var item = oEvent.getParameter("selectedItem");
+      if (item) {
+        this.getView().getModel().setProperty("/category", item.getKey());
+      }
     },
 
-    // ✅ Handle Checkbox
+    // ✅ CHECKBOX (MULTI SELECT ARRAY)
     onCheckBoxSelect: function (oEvent) {
-      var selected = oEvent.getSource().getText();
-      var isChecked = oEvent.getParameter("selected");
+      var text = oEvent.getSource().getText();
+      var selected = oEvent.getParameter("selected");
 
-      var aInterests = this.getView().getModel().getProperty("/interests");
+      var aInterests = this.getView().getModel().getProperty("/interests") || [];
 
-      if (isChecked) {
-        aInterests.push(selected);
+      if (selected) {
+        if (!aInterests.includes(text)) {
+          aInterests.push(text);
+        }
       } else {
         aInterests = aInterests.filter(function (item) {
-          return item !== selected;
+          return item !== text;
         });
       }
 
       this.getView().getModel().setProperty("/interests", aInterests);
     },
 
-    // ✅ Handle Switch
-    onSwitchChange: function (oEvent) {
-      var state = oEvent.getParameter("state");
-      this.getView().getModel().setProperty("/notifications", state);
+    // ✅ MULTI COMBOBOX
+    onMultiSelect: function (oEvent) {
+      var aItems = oEvent.getParameter("selectedItems");
+
+      var aValues = aItems.map(function (item) {
+        return item.getText();
+      });
+
+      this.getView().getModel().setProperty("/skills", aValues);
     },
 
-    // ✅ Handle File Upload
+    // ✅ FILE UPLOAD
     onFileChange: function (oEvent) {
       var file = oEvent.getParameter("files")[0];
+
       if (file) {
         this.getView().getModel().setProperty("/file", file.name);
       }
     },
 
-    // ✅ Submit Button
-    onLoginPress: function () {
+    // ✅ SWITCH TOGGLE
+    onSwitchChange: function (oEvent) {
+      var state = oEvent.getParameter("state");
+      this.getView().getModel().setProperty("/notifications", state);
+    },
+
+    // ✅ SUBMIT BUTTON
+    onSubmit: function () {
       var oData = this.getView().getModel().getData();
 
-      console.log("Form Data:", oData);
+      console.log("FORM DATA:", oData);
 
-      MessageToast.show("Form Submitted Successfully!");
+      MessageToast.show("Form Submitted Successfully ✅");
     }
 
   });
