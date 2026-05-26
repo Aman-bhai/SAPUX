@@ -1,16 +1,13 @@
 /**
  * ==========================================================
- * SAPUI5 PRODUCT TABLE CONTROLLER
+ * SIMPLE SAPUI5 CONTROLLER (BEGINNER FRIENDLY)
  * ==========================================================
- * Features:
- * ✅ Load product data (JSONModel)
- * ✅ Search (by product name)
- * ✅ Filter (by brand)
- * ✅ Sort (by price – toggle ASC/DESC)
- * ✅ Event Delegate (onAfterRendering)
- * ✅ Item click handling
- *
- * Author: Aman Soni
+ * What this app does:
+ * 👉 Shows products in table
+ * 👉 Search products
+ * 👉 Filter by brand
+ * 👉 Sort by price
+ * 👉 Click to see details
  * ==========================================================
  */
 
@@ -29,14 +26,12 @@ sap.ui.define([
 
     /**
      * ==========================================================
-     * onInit() – Runs when controller is initialized
+     * 1. APP STARTS HERE
      * ==========================================================
      */
     onInit: function () {
 
-      /**
-       * ✅ Step 1: Define Product Data (Mock API Response)
-       */
+      // ✅ Step 1: Create product data (like backend response)
       var oData = {
         products: [
           { productId: 101, name: "Apple iPhone 14", price: 69999, brand: "Apple", rating: 4.7, stock: 25 },
@@ -48,27 +43,22 @@ sap.ui.define([
         ]
       };
 
-      /**
-       * ✅ Step 2: Bind Data to View using JSON Model
-       */
+      // ✅ Step 2: Put data inside JSONModel (data box)
       var oModel = new JSONModel(oData);
+
+      // ✅ Step 3: Give data to UI (table will use it)
       this.getView().setModel(oModel);
 
-      /**
-       * ✅ Step 3: Initialize Filters & Sorter
-       */
-      this._aFilters = [];                  // stores combined filters
-      this._aSearchFilter = [];             // search filters
-      this._aBrandFilter = [];              // dropdown filters
-      this._oSorter = new Sorter("price", false); // default ascending sort
+      // ✅ Step 4: Store filters and sorting
+      this._aFilters = [];      // stores filters
+      this._oSorter = new Sorter("price", false); // sort by price (low → high)
 
       /**
-       * ✅ Step 4: Event Delegate (Important)
-       * Runs after UI rendering is complete
+       * ✅ Step 5: Wait until screen is ready
+       * then apply filter + sort
        */
       this.getView().addEventDelegate({
         onAfterRendering: function () {
-          console.log("✅ View Rendered → Applying Filters & Sorting");
           this._applyFiltersAndSort();
         }.bind(this)
       });
@@ -78,17 +68,24 @@ sap.ui.define([
 
     /**
      * ==========================================================
-     * CENTRAL METHOD – Apply filters + sorting together
+     * 2. MAIN FUNCTION (APPLIES FILTER + SORT)
      * ==========================================================
      */
     _applyFiltersAndSort: function () {
 
+      // 📌 Get table
       var oTable = this.byId("yourTableId");
+
+      // 📌 Get table data connection
       var oBinding = oTable.getBinding("items");
 
       if (oBinding) {
-        oBinding.filter(this._aFilters); // apply filters
-        oBinding.sort(this._oSorter);    // apply sorting
+
+        // ✅ Apply filter (like search or dropdown)
+        oBinding.filter(this._aFilters);
+
+        // ✅ Apply sorting
+        oBinding.sort(this._oSorter);
       }
     },
 
@@ -96,83 +93,62 @@ sap.ui.define([
 
     /**
      * ==========================================================
-     * SEARCH FUNCTION (Search by product name)
+     * 3. SEARCH FUNCTION (WHEN USER TYPES)
      * ==========================================================
      */
     onSearch: function (oEvent) {
 
+      // 🧠 Get what user typed
       var sQuery = oEvent.getParameter("newValue");
 
-      this._aSearchFilter = [];
+      this._aFilters = [];
 
+      // ✅ If user typed something
       if (sQuery) {
-        this._aSearchFilter.push(
-          new Filter("name", FilterOperator.Contains, sQuery)
-        );
+
+        // ✅ Create filter
+        var oFilter = new Filter("name", FilterOperator.Contains, sQuery);
+
+        this._aFilters.push(oFilter);
       }
 
       /**
-       * Example:
-       * User types: "Apple"
-       * → Only products with "Apple" in name appear
+       * SIMPLE EXAMPLE:
+       * User types "Apple"
+       * → Only Apple products shown
        */
-      this._updateFilters();
+
+      this._applyFiltersAndSort();
     },
 
 
 
     /**
      * ==========================================================
-     * FILTER FUNCTION (Filter by brand dropdown)
+     * 4. FILTER FUNCTION (DROPDOWN)
      * ==========================================================
      */
     onFilterCategory: function (oEvent) {
 
+      // 🧠 Get selected brand
       var sKey = oEvent.getSource().getSelectedKey();
-
-      this._aBrandFilter = [];
-
-      if (sKey !== "All") {
-        this._aBrandFilter.push(
-          new Filter("brand", FilterOperator.EQ, sKey)
-        );
-      }
-
-      /**
-       * Example:
-       * Select "Apple"
-       * → Only Apple products appear
-       */
-      this._updateFilters();
-    },
-
-
-
-    /**
-     * ==========================================================
-     * COMBINE SEARCH + FILTER
-     * ==========================================================
-     */
-    _updateFilters: function () {
 
       this._aFilters = [];
 
-      // Combine search filters
-      if (this._aSearchFilter) {
-        this._aFilters = this._aFilters.concat(this._aSearchFilter);
-      }
+      if (sKey !== "All") {
 
-      // Combine brand filters
-      if (this._aBrandFilter) {
-        this._aFilters = this._aFilters.concat(this._aBrandFilter);
+        // ✅ Filter by brand
+        var oFilter = new Filter("brand", FilterOperator.EQ, sKey);
+
+        this._aFilters.push(oFilter);
       }
 
       /**
-       * Example:
-       * Search: "iPhone"
-       * Filter: "Apple"
-       * → Both applied together ✅
+       * EXAMPLE:
+       * Select "Apple"
+       * → Only Apple products visible
        */
+
       this._applyFiltersAndSort();
     },
 
@@ -180,50 +156,50 @@ sap.ui.define([
 
     /**
      * ==========================================================
-     * SORT FUNCTION (Toggle Asc/Desc)
+     * 5. SORT FUNCTION
      * ==========================================================
      */
     onSortByPrice: function () {
 
-      this._bDesc = !this._bDesc;  // toggle sort direction
+      // ✅ Toggle sorting direction
+      this._bDesc = !this._bDesc;
 
+      // ✅ Apply sorter
       this._oSorter = new Sorter("price", this._bDesc);
 
       this._applyFiltersAndSort();
 
-      MessageToast.show(
-        "Sorted: " + (this._bDesc ? "High → Low" : "Low → High")
-      );
-
       /**
-       * Example:
-       * First click → Low to High
-       * Second click → High to Low
+       * EXAMPLE:
+       * Click 1 → low to high
+       * Click 2 → high to low
        */
+
+      MessageToast.show("Sorting applied!");
     },
 
 
 
     /**
      * ==========================================================
-     * ITEM PRESS (Row Click)
+     * 6. CLICK ON ROW
      * ==========================================================
      */
     onItemPress: function (oEvent) {
 
-      var oProduct = oEvent.getSource()
-        .getBindingContext()
-        .getObject();
+      // ✅ Get clicked product data
+      var oProduct = oEvent.getSource().getBindingContext().getObject();
 
+      // ✅ Show message
       MessageToast.show(
-        "You selected: " + oProduct.name +
+        "You clicked: " + oProduct.name + 
         " | Price: ₹" + oProduct.price
       );
 
       /**
-       * Example:
-       * Click → iPhone 14
-       * Output → You selected: Apple iPhone 14 | Price: ₹69999
+       * EXAMPLE:
+       * Click → Apple iPhone
+       * Output → You clicked Apple iPhone
        */
     }
 
