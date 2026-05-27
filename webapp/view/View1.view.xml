@@ -4,6 +4,3 @@
     <Page id="page" title="{i18n>title}">
     </Page>
 </mvc:View>
-
-
-<!-- index.html?sap-language=DE -->

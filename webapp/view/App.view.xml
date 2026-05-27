@@ -1,20 +1,21 @@
 <mvc:View
-  controllerName="sap.practice.practice.controller.App"
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m">
+    controllerName="sap.practice.practice.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
 
-  <App>
-      <Page title="{i18n>appTitle}">
-        <content>
-          
-          <Text text="{i18n>welcomeMessage}" />
-          
-          <Button
-            text="{i18n>buttonPress}"
-            press="onPress" />
+    <VBox class="sapUiSmallMargin">
 
-        </content>
-      </Page>
-  </App>
+        <!-- USER INPUT -->
+        <Input 
+            value="{/name}" 
+            placeholder="Enter your name" />
+
+        <!-- FORMATTER OUTPUT -->
+        <Text text="{
+            path: '/name',
+            formatter: '.formatter.formatName'
+        }" />
+
+    </VBox>
 
 </mvc:View>
