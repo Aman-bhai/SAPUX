@@ -1,12 +1,11 @@
 <mvc:View
-    controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:custom="sap.practice.practice.control">
 
-    <App>
-<Page >
-<Button class="myButton" text="Submit" press="onPress" />
-</Page>
-    </App>
+    <custom:MyButton
+        text="My Custom Button"
+        class="myButton"
+        press="onPress" />
 
 </mvc:View>
