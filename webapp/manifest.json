@@ -33,7 +33,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": false,
+    "flexEnabled": true,
     "dependencies": {
       "minUI5Version": "1.148.0",
       "libs": {
@@ -73,32 +73,18 @@
         "viewPath": "sap.practice.practice.view"
       },
       "routes": [
-      
- {
-          "name": "home",
-          "pattern": "",
-          "target": "home"
-        },
         {
-          "name": "detail",
-          "pattern": "detail",
-          "target": "detail"
-        },
-        {
-          "name": "search",
-          "pattern": "search",
-          "target": "search"
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
         }
       ],
       "targets": {
-        "home": {
-          "viewName": "Home"
-        },
-        "detail": {
-          "viewName": "Detail"
-        },
-        "search": {
-          "viewName": "Search"
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
         }
       }
     },

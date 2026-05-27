@@ -1,3 +1,20 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-  <App id="app"/>
+<mvc:View
+  controllerName="sap.practice.practice.controller.App"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <App>
+      <Page title="{i18n>appTitle}">
+        <content>
+          
+          <Text text="{i18n>welcomeMessage}" />
+          
+          <Button
+            text="{i18n>buttonPress}"
+            press="onPress" />
+
+        </content>
+      </Page>
+  </App>
+
 </mvc:View>
