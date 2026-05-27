@@ -1,61 +1,12 @@
 <mvc:View
     controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    displayBlock="true"
->
+    xmlns="sap.m">
+
     <App>
-        <Page title="Products">
-            <content>
-                <Table items="{/Products}">
-
-                    <columns>
-
-                        <Column>
-
-                            <Text text="ID" />
-
-                        </Column>
-
-
-                        <Column>
-
-                            <Text text="Name" />
-
-                        </Column>
-
-
-                    </columns>
-
-
-                    <items>
-
-                        <ColumnListItem>
-
-                            <cells>
-
-                                <Text text="{ID}" />
-
-                                <Text text="{Name}" />
-
-
-                            </cells>
-
-
-                        </ColumnListItem>
-
-
-                    </items>
-
-
-                </Table>
-
-
-            </content>
-
-
-        </Page>
-
-
+<Page >
+<Button class="myButton" text="Submit" press="onPress" />
+</Page>
     </App>
+
 </mvc:View>

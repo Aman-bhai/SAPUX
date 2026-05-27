@@ -1,18 +1,16 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller"
-], function (Controller) {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel"
+], function (Controller, formatter, JSONModel) {
+    "use strict";
 
-  "use strict";
+    return Controller.extend("sap.practice.practice.controller.App", {
 
-  return Controller.extend(
-    "sap.practice.practice.controller.App",
-    {
+       
 
-      onInit: function () {
+        onInit: function () {
+          
+        }
 
-        console.log("App Loaded");
-
-      }
-    }
-  );
+    });
 });
