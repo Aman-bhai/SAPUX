@@ -3,12 +3,5 @@ sap.ui.define([
 ], function (Controller) {
   "use strict";
 
-  return Controller.extend("my.app.controller.App", {
-
-    onInit: function () {
-      // App container initialized
-      console.log("✅ App controller loaded");
-    }
-
-  });
+  return Controller.extend("sap.practice.practice.controller.App", {});
 });

@@ -4,20 +4,8 @@
 
   <Page title="Home">
     <content>
-
-      <List items="{/products}"
-      mode="SingleSelectMaster"
-      selectionChange="onSelectionChange">
-  <StandardListItem
-    title="{name}"
-    description="{category}" />
-</List>
-
-
-      <Button text="Search Electronics"
-              press="onSearch"
-              class="sapUiSmallMargin"/>
-
+      <Button text="Go to Detail" press="onGoDetail" class="sapUiSmallMargin"/>
+      <Button text="Go to Search" press="onGoSearch" class="sapUiSmallMargin"/>
     </content>
   </Page>
 

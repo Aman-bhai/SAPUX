@@ -2,13 +2,9 @@
           xmlns="sap.m"
           controllerName="sap.practice.practice.controller.Search">
 
-  <Page title="Search Results" showNavButton="true" navButtonPress="onBack">
+  <Page title="Search" showNavButton="true" navButtonPress="onBack">
     <content>
-
-      <List id="list" items="{/products}">
-        <StandardListItem title="{name}" description="{category}" />
-      </List>
-
+      <Text text="This is Search Page"/>
     </content>
   </Page>
 

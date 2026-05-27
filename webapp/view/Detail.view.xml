@@ -4,7 +4,7 @@
 
   <Page title="Detail" showNavButton="true" navButtonPress="onBack">
     <content>
-      <Text id="productText"/>
+      <Text text="This is Detail Page"/>
     </content>
   </Page>
 

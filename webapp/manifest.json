@@ -73,19 +73,20 @@
         "viewPath": "sap.practice.practice.view"
       },
       "routes": [
-        {
+      
+ {
           "name": "home",
           "pattern": "",
           "target": "home"
         },
         {
           "name": "detail",
-          "pattern": "detail/{id}",
+          "pattern": "detail",
           "target": "detail"
         },
         {
           "name": "search",
-          "pattern": "search:?query:",
+          "pattern": "search",
           "target": "search"
         }
       ],
