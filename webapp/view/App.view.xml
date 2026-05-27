@@ -1,21 +1,61 @@
 <mvc:View
     controllerName="sap.practice.practice.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <App>
+        <Page title="Products">
+            <content>
+                <Table items="{/Products}">
 
-    <VBox class="sapUiSmallMargin">
+                    <columns>
 
-        <!-- USER INPUT -->
-        <Input 
-            value="{/name}" 
-            placeholder="Enter your name" />
+                        <Column>
 
-        <!-- FORMATTER OUTPUT -->
-        <Text text="{
-            path: '/name',
-            formatter: '.formatter.formatName'
-        }" />
+                            <Text text="ID" />
 
-    </VBox>
+                        </Column>
 
+
+                        <Column>
+
+                            <Text text="Name" />
+
+                        </Column>
+
+
+                    </columns>
+
+
+                    <items>
+
+                        <ColumnListItem>
+
+                            <cells>
+
+                                <Text text="{ID}" />
+
+                                <Text text="{Name}" />
+
+
+                            </cells>
+
+
+                        </ColumnListItem>
+
+
+                    </items>
+
+
+                </Table>
+
+
+            </content>
+
+
+        </Page>
+
+
+    </App>
 </mvc:View>
