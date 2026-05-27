@@ -1,9 +1,4 @@
 .sapMBtn.myButton .sapMBtnInner {
     background-color: #007bff;
     color: white;
-    border-radius: 4px;
-}
-
-.sapMBtn.myButton .sapMBtnInner:hover {
-    background-color: white;
 }

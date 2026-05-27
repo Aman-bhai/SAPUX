@@ -4,8 +4,9 @@
     xmlns:custom="sap.practice.practice.control">
 
     <custom:MyButton
-        text="My Custom Button"
-        class="myButton"
-        press="onPress" />
+        id="myButton"
+        text="Composite Button"
+        type="Emphasized"
+        press="onPress"/>
 
 </mvc:View>

@@ -1,11 +1,27 @@
 sap.ui.define([
-    "sap/m/Button"
-], function (Button) {
+    "sap/ui/core/XMLComposite"
+], function (XMLComposite) {
     "use strict";
 
-    return Button.extend("sap.practice.practice.control.MyButton", {
-        metadata: {},
+    return XMLComposite.extend("sap.practice.practice.control.MyButton", {
+        metadata: {
+            properties: {
+                text: {
+                    type: "string",
+                    defaultValue: ""
+                },
+                type: {
+                    type: "string",
+                    defaultValue: "Default"
+                }
+            },
+            events: {
+                press: {}
+            }
+        },
 
-        renderer: {}
+        onPress: function (oEvent) {
+            this.firePress();
+        }
     });
 });

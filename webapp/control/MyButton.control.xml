@@ -1,0 +1,11 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Button
+        text="{$this>text}"
+        type="{$this>type}"
+        press=".onPress"
+        class="myButton"/>
+
+</core:FragmentDefinition>
