@@ -1,0 +1,15 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="sap.practice.practice.controller.Search">
+
+  <Page title="Search Results" showNavButton="true" navButtonPress="onBack">
+    <content>
+
+      <List id="list" items="{/products}">
+        <StandardListItem title="{name}" description="{category}" />
+      </List>
+
+    </content>
+  </Page>
+
+</mvc:View>

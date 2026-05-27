@@ -74,17 +74,30 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView1"
-          ]
+          "name": "home",
+          "pattern": "",
+          "target": "home"
+        },
+        {
+          "name": "detail",
+          "pattern": "detail/{id}",
+          "target": "detail"
+        },
+        {
+          "name": "search",
+          "pattern": "search:?query:",
+          "target": "search"
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "home": {
+          "viewName": "Home"
+        },
+        "detail": {
+          "viewName": "Detail"
+        },
+        "search": {
+          "viewName": "Search"
         }
       }
     },

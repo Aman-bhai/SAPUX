@@ -1,0 +1,24 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="sap.practice.practice.controller.Home">
+
+  <Page title="Home">
+    <content>
+
+      <List items="{/products}"
+      mode="SingleSelectMaster"
+      selectionChange="onSelectionChange">
+  <StandardListItem
+    title="{name}"
+    description="{category}" />
+</List>
+
+
+      <Button text="Search Electronics"
+              press="onSearch"
+              class="sapUiSmallMargin"/>
+
+    </content>
+  </Page>
+
+</mvc:View>

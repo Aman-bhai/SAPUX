@@ -1,0 +1,11 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="sap.practice.practice.controller.Detail">
+
+  <Page title="Detail" showNavButton="true" navButtonPress="onBack">
+    <content>
+      <Text id="productText"/>
+    </content>
+  </Page>
+
+</mvc:View>
