@@ -1,12 +1,25 @@
 <mvc:View
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:custom="sap.practice.practice.control">
+    controllerName="sap.practice.practice.controller.App"
 
-    <custom:MyButton
-        id="myButton"
-        text="Composite Button"
-        type="Emphasized"
-        press="onPress"/>
+    xmlns:mvc="sap.ui.core.mvc"
+
+    xmlns="sap.m">
+
+    <App>
+
+            <Page title="Library Demo">
+
+                <content>
+
+                    <Button
+                        text="Run Library Logic"
+                        press="onRefresh" />
+
+                </content>
+
+            </Page>
+
+
+    </App>
 
 </mvc:View>
